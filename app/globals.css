@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f5f4f0;
+  --fg: #1a1a1a;
+  --muted: #8c8a84;
+  --border: #dedcd5;
+  --accent: #e9e7e0;
+  --accent-fg: #1a1a1a;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  -ms-overflow-style: none;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+/* visible keyboard focus, kept for a11y regardless of theme */
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
