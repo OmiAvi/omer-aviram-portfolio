@@ -86,10 +86,10 @@ export const siteConfig: SiteConfig = {
 
   bio: {
     intro: {
-      en: "University of Florida CS student with a passion for sports and is chasing after his goals with a camera in one hand and a laptop in the other, just ran Snapback Sports Intern content channels to 23.9M+ impressions this summer.",
-      fr: "Étudiant en informatique à l'Université de Floride, passionné de sport et toujours à la poursuite de ses objectifs, caméra dans une main et ordinateur dans l'autre. Pilotage des canaux de contenu des intern de Snapback Sports jusqu'à 23,9M+ d'impressions cet été.",
-      es: "Estudiante de Ciencias de la Computación en la Universidad de Florida, apasionado por el deporte y siempre persiguiendo sus metas con una cámara en una mano y una laptop en la otra. Gestión de los canales de contenido de los intern de Snapback Sports hasta 23,9M+ de impresiones este verano.",
-      bn: "ফ্লোরিডা বিশ্ববিদ্যালয়ের সিএস শিক্ষার্থী, খেলাধুলার প্রতি আমার প্রচণ্ড আগ্রহ, একহাতে ক্যামেরা ও অন্যহাতে ল্যাপটপ নিয়ে নিজের লক্ষ্যের পিছনে ছুটছি। এই গ্রীষ্মে Snapback Sports-এর ইন্টার্ন কনটেন্ট চ্যানেলগুলো পরিচালনা করে ২৩.৯M+ ইম্প্রেশনে পৌঁছে দিয়েছি।",
+      en: "University of Florida Computer Science student who spent summer 2026 as Snapback Sports' Software Development & Content Intern, shipping Snapback Saturdays and running its content channels to 23.9M+ impressions.",
+      fr: "Étudiant en informatique à l'Université de Floride, stagiaire Développement & Contenu chez Snapback Sports à l'été 2026, où j'ai livré Snapback Saturdays et piloté les canaux de contenu jusqu'à 23,9M+ d'impressions.",
+      es: "Estudiante de Ciencias de la Computación en la Universidad de Florida, pasante de Desarrollo y Contenido en Snapback Sports durante el verano de 2026, donde lancé Snapback Saturdays y gestioné sus canales de contenido hasta 23,9M+ de impresiones.",
+      bn: "ফ্লোরিডা বিশ্ববিদ্যালয়ের কম্পিউটার সায়েন্স শিক্ষার্থী, ২০২৬ সালের গ্রীষ্মে Snapback Sports-এ সফটওয়্যার ডেভেলপমেন্ট ও কনটেন্ট ইন্টার্ন হিসেবে কাজ করেছি, Snapback Saturdays তৈরি করেছি এবং কনটেন্ট চ্যানেলগুলো ২৩.৯M+ ইম্প্রেশনে পৌঁছে দিয়েছি।",
     },
   },
 
