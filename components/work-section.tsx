@@ -6,6 +6,26 @@ import { ChevronRight } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 import { useLocale } from "./locale-provider";
 
+const DOMAIN_RE = /((?:[a-z0-9-]+\.)+(?:com|org|net|io|co))\b/gi;
+
+function linkify(text: string) {
+  return text.split(DOMAIN_RE).map((part, i) =>
+    i % 2 === 1 ? (
+      <a
+        key={i}
+        href={`https://${part}`}
+        target="_blank"
+        rel="noreferrer"
+        className="cursor-pointer underline decoration-border underline-offset-4 hover:text-fg hover:decoration-fg"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
+
 export function WorkSection() {
   const { locale, t } = useLocale();
   const [openId, setOpenId] = useState<string | null>(null);
@@ -75,7 +95,7 @@ export function WorkSection() {
                             className="flex gap-2 text-[13.5px] leading-relaxed text-fg/85"
                           >
                             <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-muted" />
-                            {point}
+                            {linkify(point)}
                           </li>
                         ))}
                       </ul>

@@ -14,7 +14,7 @@ export function NavBar() {
     siteConfig.social.linkedin,
     siteConfig.social.twitter,
     { label: t("resume"), href: siteConfig.resume },
-  ];
+  ].filter((link) => link.href);
 
   return (
     <header className="flex flex-col gap-4 pt-8 pb-4 sm:pt-10">

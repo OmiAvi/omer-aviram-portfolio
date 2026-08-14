@@ -58,19 +58,21 @@ export function ProjectsSection() {
             <div className="flex items-center justify-between gap-4 py-2 text-sm">
               <div className="min-w-0 flex-1">
                 <p className="truncate">{project.name}</p>
-                <p className="truncate text-[13.5px] mt-1.5 text-muted">
+                <p className="text-[13.5px] mt-1.5 leading-relaxed text-muted">
                   {project.description[locale]}
                 </p>
               </div>
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${project.name} live demo`}
-                className="flex shrink-0 cursor-pointer items-center text-muted transition-colors hover:text-fg"
-              >
-                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-              </a>
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${project.name} live demo`}
+                  className="flex shrink-0 cursor-pointer items-center text-muted transition-colors hover:text-fg"
+                >
+                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                </a>
+              )}
             </div>
           </motion.li>
         ))}
@@ -81,24 +83,35 @@ export function ProjectsSection() {
               key={active.id}
               className="pointer-events-none absolute z-20 hidden w-52 sm:block"
               style={{ left: springX, top: springY, x: 24, y: -108 }}
-              initial={{ opacity: 0, scale: 0.6, rotate: -6 }}
-              animate={{ opacity: 1, scale: 1, rotate: -3 }}
-              exit={{ opacity: 0, scale: 0.6, rotate: 6 }}
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.6 }}
               transition={{ type: "spring", bounce: 0.5, duration: 0.45 }}
             >
-              <div
-                className="relative aspect-4/3 w-full overflow-hidden rounded-xl border border-border shadow-xl"
-                style={{
-                  background: `linear-gradient(140deg, ${active.gradientFrom}, ${active.gradientTo})`,
-                }}
-              >
-                <Image
-                  src={active.image}
-                  alt={active.name}
-                  fill
-                  sizes="208px"
-                  className="object-cover"
-                />
+              <div className="relative aspect-4/3 w-full">
+                {active.images.map((src, i) => {
+                  const tilt = i === 0 ? -8 : 8;
+                  const shift = i === 0 ? -10 : 10;
+                  return (
+                    <div
+                      key={src}
+                      className="absolute inset-0 overflow-hidden rounded-xl border border-border shadow-xl"
+                      style={{
+                        transform: `rotate(${tilt}deg) translateX(${shift}px)`,
+                        zIndex: i,
+                        background: `linear-gradient(140deg, ${active.gradientFrom}, ${active.gradientTo})`,
+                      }}
+                    >
+                      <Image
+                        src={src}
+                        alt={`${active.name} screenshot ${i + 1}`}
+                        fill
+                        sizes="208px"
+                        className="object-cover"
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           )}

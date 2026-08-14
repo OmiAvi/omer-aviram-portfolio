@@ -3,7 +3,7 @@ import type { Locale } from "@/lib/i18n";
 /**
  *  SITE CONFIG
  *  Everything on the page comes from this one file. LocalizedText /
- *  LocalizedList fields hold one value per language — fill in en at
+ *  LocalizedList fields hold one value per language. Fill in en at
  *  minimum, the rest are optional-but-expected.
 */
 
@@ -31,13 +31,21 @@ export type Role = {
   highlights: LocalizedList;
 };
 
+export type ActiveEntry = {
+  id: string;
+  range: string;
+  location: LocalizedText;
+  highlights: LocalizedList;
+  link: SocialLink;
+};
+
 export type Project = {
   id: string;
   name: string;
   subtitle: LocalizedText;
   description: LocalizedText;
   github: string;
-  image: string;
+  images: string[];
   demo: string;
   gradientFrom: string;
   gradientTo: string;
@@ -56,129 +64,201 @@ export type SiteConfig = {
   resume: string;
   bio: {
     intro: LocalizedText;
-    current: LocalizedText;
   };
   social: {
     github: SocialLink;
     linkedin: SocialLink;
     twitter: SocialLink;
   };
+  active: ActiveEntry[];
   roles: Role[];
   projects: Project[];
   themes: Theme[];
   defaultThemeId: string;
-  //shown in the page footer — this template is free to reuse
-  template: {
-    authorName: string;
-    authorUrl: string;
-    repoUrl: string;
-  };
 };
 
 export const siteConfig: SiteConfig = {
-  fullName: "Bidyut Kundu",
-  location: "Kolkata, India",
-  email: "bidyut.kundu.dev@gmail.com",
-  openToWork: true,
-  resume: "/pdfs/Software_Engineer-Bidyut_Kundu.pdf",
+  fullName: "Omer Aviram",
+  location: "Gainesville, FL",
+  email: "omeravi2005@gmail.com",
+  openToWork: false,
+  resume: "/pdfs/Omer_Aviram_Resume_2026_August.pdf",
 
   bio: {
     intro: {
-      en: "3.5+ years building products at a startup, across the backend, the frontend, and everything in between.",
-      fr: "3,5+ ans à construire des produits en startup, du backend au frontend et tout ce qu'il y a entre les deux.",
-      es: "Más de 3,5 años construyendo productos en una startup, entre el backend, el frontend y todo lo demás.",
-      bn: "একটি স্টার্টআপে ৩.৫+ বছর ধরে প্রোডাক্ট বানাচ্ছি — ব্যাকএন্ড, ফ্রন্টএন্ড এবং মাঝের সবকিছু।",
-    },
-    current: {
-      en: "These days I'm focused on Opensource UI, a free React & Next.js component library — 1,000+ developers use it every month.",
-      fr: "En ce moment, je me concentre sur Opensource UI, une bibliothèque de composants React & Next.js gratuite — utilisée par plus de 1 000 développeurs chaque mois.",
-      es: "Ahora mismo estoy centrado en Opensource UI, una librería de componentes React y Next.js gratuita, usada por más de 1.000 desarrolladores cada mes.",
-      bn: "আজকাল আমি Opensource UI নিয়ে কাজ করছি, একটি ফ্রি React ও Next.js কম্পোনেন্ট লাইব্রেরি — প্রতি মাসে ১,০০০+ ডেভেলপার এটি ব্যবহার করেন।",
+      en: "University of Florida CS student who spent summer 2026 as Snapback Sports' Software Development & Content Intern, shipping Snapback Saturdays and running its content channels to 23.9M+ impressions.",
+      fr: "Étudiant en informatique à l'Université de Floride, stagiaire Développement & Contenu chez Snapback Sports à l'été 2026, où j'ai livré Snapback Saturdays et piloté les canaux de contenu jusqu'à 23,9M+ d'impressions.",
+      es: "Estudiante de Ciencias de la Computación en la Universidad de Florida, pasante de Desarrollo y Contenido en Snapback Sports durante el verano de 2026, donde lancé Snapback Saturdays y gestioné sus canales de contenido hasta 23,9M+ de impresiones.",
+      bn: "ফ্লোরিডা বিশ্ববিদ্যালয়ের সিএস শিক্ষার্থী, ২০২৬ সালের গ্রীষ্মে Snapback Sports-এ সফটওয়্যার ডেভেলপমেন্ট ও কনটেন্ট ইন্টার্ন হিসেবে কাজ করেছি, Snapback Saturdays তৈরি করেছি এবং কনটেন্ট চ্যানেলগুলো ২৩.৯M+ ইম্প্রেশনে পৌঁছে দিয়েছি।",
     },
   },
 
   social: {
-    github: { label: "GitHub", href: "https://github.com/bidyut10" },
+    github: { label: "GitHub", href: "" },
     linkedin: {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/bidyut-kundu-4ba406242",
+      href: "https://www.linkedin.com/in/omeraviram",
     },
-    twitter: { label: "Twitter", href: "https://x.com/BidyutKundu12" },
+    twitter: { label: "Twitter", href: "" },
   },
+
+  active: [
+    {
+      id: "snapback-saturdays-fall",
+      range: "08.2026–12.2026",
+      location: {
+        en: "On the road · college campuses",
+        fr: "Sur la route · campus universitaires",
+        es: "De viaje · campus universitarios",
+        bn: "সফরে · কলেজ ক্যাম্পাস",
+      },
+      highlights: {
+        en: [
+          "Maintaining and shipping features on the Snapback Saturdays site all season.",
+          "Filming and editing a weekly hype video, and traveling to college football games nationwide to shoot and edit gameday content.",
+        ],
+        fr: [
+          "Maintenance et nouvelles fonctionnalités du site Snapback Saturdays tout au long de la saison.",
+          "Montage d'une vidéo hype chaque semaine et déplacements à des matchs de football universitaire dans tout le pays pour filmer et monter le contenu du jour de match.",
+        ],
+        es: [
+          "Mantenimiento y desarrollo continuo del sitio de Snapback Saturdays durante toda la temporada.",
+          "Filmación y edición de un video hype semanal, y viajes a partidos de fútbol americano universitario por todo el país para grabar y editar contenido del día del partido.",
+        ],
+        bn: [
+          "পুরো মৌসুম জুড়ে Snapback Saturdays সাইট মেইনটেইন ও নতুন ফিচার যোগ করছি।",
+          "প্রতি সপ্তাহে একটি হাইপ ভিডিও শুট ও এডিট করছি, এবং সারাদেশে কলেজ ফুটবল গেমে গিয়ে গেমডে কনটেন্ট শুট ও এডিট করছি।",
+        ],
+      },
+      link: {
+        label: "@snapbackinterns on Instagram",
+        href: "https://www.instagram.com/snapbackinterns/",
+      },
+    },
+  ],
 
   roles: [
     {
-      id: "software-developer",
+      id: "snapback-sports",
       title: {
-        en: "Software Developer",
-        fr: "Développeur logiciel",
-        es: "Desarrollador de software",
-        bn: "সফটওয়্যার ডেভেলপার",
+        en: "Software Development & Content Intern",
+        fr: "Stagiaire Développement & Contenu",
+        es: "Pasante de Desarrollo y Contenido",
+        bn: "সফটওয়্যার ডেভেলপমেন্ট ও কনটেন্ট ইন্টার্ন",
       },
       employment: {
-        en: "Full-time",
-        fr: "Temps plein",
-        es: "Tiempo completo",
-        bn: "পূর্ণকালীন",
+        en: "Internship",
+        fr: "Stage",
+        es: "Pasantía",
+        bn: "ইন্টার্নশিপ",
       },
-      range: "05.2025—06.2026",
-      location: { en: "Remote", fr: "À distance", es: "Remoto", bn: "রিমোট" },
+      range: "06.2026–08.2026",
+      location: {
+        en: "New York, NY",
+        fr: "New York, NY",
+        es: "Nueva York, NY",
+        bn: "নিউ ইয়র্ক, এনওয়াই",
+      },
       highlights: {
         en: [
-          "Migrated to Lambda microservices after a 50K+ request outage — 99.9% uptime, 60% lower cloud spend.",
-          "Built async QR tracking across 10+ nodes via SQS — 80% fewer errors, 2+ hrs/day saved.",
+          "Built Snapback Saturdays, a college football fan hub (React, Firebase, Cloudflare Workers/D1) with trip planning, a live 16-stop schedule, and a unified content hub.",
+          "Built four browser games (17-0, Chain, Highest Bid, and Higher or Lower) shipped into the Snapback Trivia app and played by 100,000+ users at games.snapbacksports.com.",
+          "Led content strategy for @snapbackinterns across TikTok, Instagram, and Twitter: 3.7K followers, 23.9M impressions, 453K likes.",
         ],
         fr: [
-          "Migration vers des microservices Lambda après une panne de 50K+ requêtes — 99,9 % de disponibilité, coûts cloud réduits de 60 %.",
-          "Suivi QR asynchrone sur 10+ nœuds via SQS — 80 % d'erreurs en moins, 2h+/jour économisées.",
+          "Développement de Snapback Saturdays, un hub pour fans de football universitaire (React, Firebase, Cloudflare Workers/D1) avec planification de voyage, un calendrier en direct sur 16 étapes et un hub de contenu unifié.",
+          "Développement de quatre jeux navigateur (17-0, Chain, Highest Bid et Higher or Lower) intégrés à l'app Snapback Trivia et joués par plus de 100 000 utilisateurs sur games.snapbacksports.com.",
+          "Pilotage de la stratégie de contenu de @snapbackinterns sur TikTok, Instagram et Twitter : 3,7K abonnés, 23,9M d'impressions, 453K likes.",
         ],
         es: [
-          "Migración a microservicios Lambda tras una caída de 50K+ solicitudes — 99,9 % de disponibilidad, 60 % menos gasto en la nube.",
-          "Seguimiento QR asíncrono en 10+ nodos vía SQS — 80 % menos errores, 2h+/día ahorradas.",
+          "Desarrollo de Snapback Saturdays, un hub para fanáticos del fútbol americano universitario (React, Firebase, Cloudflare Workers/D1) con planificación de viajes, un calendario en vivo de 16 paradas y un hub de contenido unificado.",
+          "Desarrollo de cuatro juegos de navegador (17-0, Chain, Highest Bid y Higher or Lower) integrados en la app Snapback Trivia y jugados por más de 100,000 usuarios en games.snapbacksports.com.",
+          "Estrategia de contenido de @snapbackinterns en TikTok, Instagram y Twitter: 3,7K seguidores, 23,9M de impresiones, 453K me gusta.",
         ],
         bn: [
-          "৫০K+ রিকোয়েস্ট আউটেজের পর Lambda মাইক্রোসার্ভিসে মাইগ্রেট করেছি — ৯৯.৯% আপটাইম, ৬০% কম ক্লাউড খরচ।",
-          "SQS দিয়ে ১০+ নোড জুড়ে অ্যাসিঙ্ক QR ট্র্যাকিং তৈরি করেছি — ৮০% কম এরর, দিনে ২+ ঘণ্টা সাশ্রয়।",
+          "Snapback Saturdays তৈরি করেছি, কলেজ ফুটবল ফ্যানদের জন্য একটি হাব (React, Firebase, Cloudflare Workers/D1), ট্রিপ প্ল্যানিং, ১৬টি স্টপ জুড়ে লাইভ শিডিউল এবং একটি একীভূত কনটেন্ট হাব সহ।",
+          "চারটি ব্রাউজার গেম (17-0, Chain, Highest Bid ও Higher or Lower) তৈরি করেছি, যা Snapback Trivia অ্যাপে যুক্ত হয়েছে এবং games.snapbacksports.com-এ ১,০০,০০০+ ইউজার খেলেছেন।",
+          "TikTok, Instagram ও Twitter-এ @snapbackinterns-এর কনটেন্ট স্ট্র্যাটেজি পরিচালনা করেছি: ৩.৭K ফলোয়ার, ২৩.৯M ইম্প্রেশন, ৪৫৩K লাইক।",
         ],
       },
     },
     {
-      id: "associate",
+      id: "littleone-care",
       title: {
-        en: "Associate Software Developer",
-        fr: "Développeur logiciel associé",
-        es: "Desarrollador de software asociado",
-        bn: "অ্যাসোসিয়েট সফটওয়্যার ডেভেলপার",
+        en: "Full Stack Developer Intern",
+        fr: "Stagiaire développeur full-stack",
+        es: "Pasante de desarrollo full-stack",
+        bn: "ফুল স্ট্যাক ডেভেলপার ইন্টার্ন",
       },
       employment: {
-        en: "Full-time",
-        fr: "Temps plein",
-        es: "Tiempo completo",
-        bn: "পূর্ণকালীন",
+        en: "Internship",
+        fr: "Stage",
+        es: "Pasantía",
+        bn: "ইন্টার্নশিপ",
       },
-      range: "04.2023—05.2025",
+      range: "05.2025–08.2025",
       location: {
-        en: "On-site",
-        fr: "Sur site",
-        es: "Presencial",
-        bn: "অন-সাইট",
+        en: "Tel Aviv, Israel",
+        fr: "Tel Aviv, Israël",
+        es: "Tel Aviv, Israel",
+        bn: "তেল আভিভ, ইসরায়েল",
       },
       highlights: {
         en: [
-          "Shipped full-stack features across React, Node.js, and PostgreSQL for production client systems.",
-          "Owned API integrations, auth flows, and day-to-day debugging in an on-site engineering team.",
+          "Designed and built the company website with a responsive UI across desktop and mobile.",
+          "Built and optimized back-end services with Node.js, React Native, and MongoDB for scalable APIs.",
         ],
         fr: [
-          "Développement de fonctionnalités full-stack (React, Node.js, PostgreSQL) pour des systèmes clients en production.",
-          "Responsable des intégrations API, des flux d'authentification et du débogage au quotidien.",
+          "Conception et développement du site web de l'entreprise avec une interface responsive sur ordinateur et mobile.",
+          "Développement et optimisation de services back-end avec Node.js, React Native et MongoDB pour des API évolutives.",
         ],
         es: [
-          "Desarrollo de funcionalidades full-stack (React, Node.js, PostgreSQL) para sistemas de clientes en producción.",
-          "A cargo de integraciones API, flujos de autenticación y depuración diaria en un equipo presencial.",
+          "Diseño y desarrollo del sitio web de la empresa con una interfaz responsive en escritorio y móvil.",
+          "Desarrollo y optimización de servicios back-end con Node.js, React Native y MongoDB para APIs escalables.",
         ],
         bn: [
-          "প্রোডাকশন ক্লায়েন্ট সিস্টেমের জন্য React, Node.js ও PostgreSQL জুড়ে ফুল-স্ট্যাক ফিচার বানিয়েছি।",
-          "অন-সাইট ইঞ্জিনিয়ারিং টিমে API ইন্টিগ্রেশন, অথ ফ্লো এবং দৈনন্দিন ডিবাগিংয়ের দায়িত্বে ছিলাম।",
+          "ডেস্কটপ ও মোবাইল জুড়ে রেসপন্সিভ UI সহ কোম্পানির ওয়েবসাইট ডিজাইন ও তৈরি করেছি।",
+          "স্কেলেবল API-এর জন্য Node.js, React Native ও MongoDB দিয়ে ব্যাকএন্ড সার্ভিস তৈরি ও অপ্টিমাইজ করেছি।",
+        ],
+      },
+    },
+    {
+      id: "tamid-group",
+      title: {
+        en: "Technical Consultant",
+        fr: "Consultant technique",
+        es: "Consultor técnico",
+        bn: "টেকনিক্যাল কনসালট্যান্ট",
+      },
+      employment: {
+        en: "Part-time",
+        fr: "Temps partiel",
+        es: "Medio tiempo",
+        bn: "খণ্ডকালীন",
+      },
+      range: "08.2024–04.2025",
+      location: {
+        en: "Gainesville, FL",
+        fr: "Gainesville, Floride",
+        es: "Gainesville, FL",
+        bn: "গেইন্সভিল, ফ্লোরিডা",
+      },
+      highlights: {
+        en: [
+          "Built back-end functionality for an Israeli startup (DoroTech) based on Figma designs and product requirements.",
+          "Researched Israeli companies to identify technology pain points and propose solutions.",
+        ],
+        fr: [
+          "Développement de fonctionnalités back-end pour une startup israélienne (DoroTech) à partir de maquettes Figma et des besoins produit.",
+          "Recherche sur des entreprises israéliennes pour identifier des points de friction technologiques et proposer des solutions.",
+        ],
+        es: [
+          "Desarrollo de funcionalidades back-end para una startup israelí (DoroTech) a partir de diseños en Figma y requisitos del producto.",
+          "Investigación de empresas israelíes para identificar puntos de dolor tecnológicos y proponer soluciones.",
+        ],
+        bn: [
+          "Figma ডিজাইন ও প্রোডাক্ট রিকোয়ারমেন্টের ভিত্তিতে একটি ইসরায়েলি স্টার্টআপের (DoroTech) জন্য ব্যাকএন্ড ফাংশনালিটি তৈরি করেছি।",
+          "প্রযুক্তিগত সমস্যা চিহ্নিত করতে এবং সমাধান প্রস্তাব করতে ইসরায়েলি কোম্পানিগুলো নিয়ে গবেষণা করেছি।",
         ],
       },
     },
@@ -186,109 +266,70 @@ export const siteConfig: SiteConfig = {
 
   projects: [
     {
-      id: "opensourceui",
-      name: "Opensource UI",
+      id: "snapback-saturdays",
+      name: "Snapback Saturdays",
       subtitle: {
-        en: "Component Library",
-        fr: "Bibliothèque de composants",
-        es: "Librería de componentes",
-        bn: "কম্পোনেন্ট লাইব্রেরি",
+        en: "College Football Fan Hub",
+        fr: "Hub fans de football universitaire",
+        es: "Hub para fanáticos del fútbol universitario",
+        bn: "কলেজ ফুটবল ফ্যান হাব",
       },
       description: {
-        en: "150+ React/Next.js components. 1K+ users and 10K+ page views in the first 4 weeks post-launch.",
-        fr: "150+ composants React/Next.js. 1K+ utilisateurs et 10K+ vues en 4 semaines après le lancement.",
-        es: "150+ componentes React/Next.js. Más de 1K usuarios y 10K vistas en las primeras 4 semanas.",
-        bn: "১৫০+ React/Next.js কম্পোনেন্ট। লঞ্চের ৪ সপ্তাহে ১K+ ইউজার এবং ১০K+ পেজ ভিউ।",
+        en: "Flight, hotel, and gameday planning for every college football game, a live schedule across 16 stops, and a unified content hub for Snapback Sports.",
+        fr: "Planification des vols, hôtels et jours de match pour chaque match de football universitaire, un calendrier en direct sur 16 étapes, et un hub de contenu unifié pour Snapback Sports.",
+        es: "Planificación de vuelos, hoteles y días de partido para cada juego de fútbol americano universitario, un calendario en vivo de 16 paradas, y un hub de contenido unificado para Snapback Sports.",
+        bn: "প্রতিটি কলেজ ফুটবল গেমের জন্য ফ্লাইট, হোটেল ও গেমডে প্ল্যানিং, ১৬টি স্টপ জুড়ে লাইভ শিডিউল, এবং Snapback Sports-এর জন্য একীভূত কনটেন্ট হাব।",
       },
-      github: "https://github.com/bidyut10/opensourceui",
-      image: "/images/background6.webp",
-      demo: "https://opensourceui.in",
+      github: "",
+      images: [
+        "/images/snapback-saturdays-home.png",
+        "/images/snapback-saturdays-stadium.png",
+      ],
+      demo: "https://snapbacksaturdays.com",
+      gradientFrom: "#f5c99b",
+      gradientTo: "#3d4f7a",
+    },
+    {
+      id: "crave",
+      name: "Crave",
+      subtitle: {
+        en: "Meal Plan App",
+        fr: "App de forfaits repas",
+        es: "App de plan de comidas",
+        bn: "মিল প্ল্যান অ্যাপ",
+      },
+      description: {
+        en: "Off-campus meal plan app for UF students, built with 30+ Gainesville restaurants. Launching soon.",
+        fr: "App de forfait repas hors campus pour les étudiants de l'UF, développée avec plus de 30 restaurants de Gainesville. Lancement prochain.",
+        es: "App de plan de comidas fuera del campus para estudiantes de la UF, creada con más de 30 restaurantes de Gainesville. Próximo lanzamiento.",
+        bn: "UF শিক্ষার্থীদের জন্য অফ-ক্যাম্পাস মিল প্ল্যান অ্যাপ, ৩০+ গেইন্সভিল রেস্টুরেন্টের সাথে তৈরি। শীঘ্রই আসছে।",
+      },
+      github: "",
+      images: ["/images/crave-brand.png", "/images/crave-campaign.png"],
+      demo: "",
       gradientFrom: "#f7d9c4",
-      gradientTo: "#c9a0dc",
+      gradientTo: "#e8926a",
     },
     {
-      id: "authscale",
-      name: "Authscale",
+      id: "tailgator",
+      name: "TailGator",
       subtitle: {
-        en: "Backend Starter CLI",
-        fr: "CLI de démarrage backend",
-        es: "CLI de arranque backend",
-        bn: "ব্যাকএন্ড স্টার্টার CLI",
+        en: "Nightlife Tracker",
+        fr: "Suivi de la vie nocturne",
+        es: "Rastreador de vida nocturna",
+        bn: "নাইটলাইফ ট্র্যাকার",
       },
       description: {
-        en: "CLI generating a production-ready Express.js backend with built-in auth and security defaults.",
-        fr: "CLI générant un backend Express.js prêt pour la production, avec auth et sécurité intégrées.",
-        es: "CLI que genera un backend Express.js listo para producción, con auth y seguridad integradas.",
-        bn: "একটি CLI যা বিল্ট-ইন অথ ও সিকিউরিটি সহ প্রোডাকশন-রেডি Express.js ব্যাকএন্ড তৈরি করে।",
+        en: "Crowdsourced platform tracking wait times and cover fees at nightlife spots in real time. Launching soon.",
+        fr: "Plateforme collaborative suivant en temps réel les temps d'attente et les frais d'entrée des lieux nocturnes. Lancement prochain.",
+        es: "Plataforma colaborativa que rastrea en tiempo real los tiempos de espera y las tarifas de entrada en lugares nocturnos. Próximo lanzamiento.",
+        bn: "নাইটলাইফ স্পটগুলোতে রিয়েল-টাইমে ওয়েট টাইম ও কভার ফি ট্র্যাক করা ক্রাউডসোর্সড প্ল্যাটফর্ম। শীঘ্রই আসছে।",
       },
-      github: "https://github.com/bidyut10/authscale",
-      demo: "https://authscale.netlify.app",
-      image: "/images/background7.webp",
-      gradientFrom: "#c4e0f7",
-      gradientTo: "#a0c9b8",
-    },
-    {
-      id: "codewise",
-      name: "Codewise",
-      subtitle: {
-        en: "AI Code Reviewer",
-        fr: "Relecteur de code IA",
-        es: "Revisor de código con IA",
-        bn: "AI কোড রিভিউয়ার",
-      },
-      description: {
-        en: "Uses Google Gemini to analyze GitHub commit diffs and generate structured code review feedback.",
-        fr: "Utilise Google Gemini pour analyser les diffs GitHub et générer des retours de revue de code structurés.",
-        es: "Usa Google Gemini para analizar diffs de GitHub y generar comentarios de revisión de código estructurados.",
-        bn: "GitHub কমিট ডিফ বিশ্লেষণ করে স্ট্রাকচার্ড কোড রিভিউ ফিডব্যাক দিতে Google Gemini ব্যবহার করে।",
-      },
-      github: "https://github.com/bidyut10/code-reviewer",
-      image: "/images/background5.webp",
-      demo: "https://codewiseai.onrender.com",
-      gradientFrom: "#d9e8b8",
-      gradientTo: "#8fb8a8",
-    },
-    {
-      id: "wcut",
-      name: "Wcut",
-      subtitle: {
-        en: "URL Shortener",
-        fr: "Raccourcisseur d'URL",
-        es: "Acortador de URL",
-        bn: "URL শর্টনার",
-      },
-      description: {
-        en: "Converts long URLs into short links and handles redirection efficiently using in-memory caching.",
-        fr: "Convertit les longues URLs en liens courts et gère la redirection efficacement via un cache en mémoire.",
-        es: "Convierte URLs largas en enlaces cortos y gestiona la redirección eficientemente con caché en memoria.",
-        bn: "লম্বা URL-কে ছোট লিঙ্কে পরিণত করে এবং ইন-মেমরি ক্যাশিং দিয়ে কার্যকরভাবে রিডাইরেক্ট করে।",
-      },
-      github: "https://github.com/bidyut10/urlShortner",
-      demo: "https://wcut.netlify.app",
-      image: "/images/background3.webp",
-      gradientFrom: "#c4d4f7",
-      gradientTo: "#7fa8d9",
-    },
-    {
-      id: "paperdoc",
-      name: "Paperdoc",
-      subtitle: {
-        en: "Invoice Generator",
-        fr: "Générateur de factures",
-        es: "Generador de facturas",
-        bn: "ইনভয়েস জেনারেটর",
-      },
-      description: {
-        en: "Generates professional invoices and receipts with customizable templates and payment options.",
-        fr: "Génère des factures et reçus professionnels avec des modèles et options de paiement personnalisables.",
-        es: "Genera facturas y recibos profesionales con plantillas y opciones de pago personalizables.",
-        bn: "কাস্টমাইজেবল টেমপ্লেট ও পেমেন্ট অপশন সহ প্রফেশনাল ইনভয়েস ও রসিদ তৈরি করে।",
-      },
-      github: "https://github.com/bidyut10/corporate-inv",
-      demo: "https://paperdoc.netlify.app",
-      image: "/images/background.webp",
-      gradientFrom: "#e0dcc4",
-      gradientTo: "#a8a074",
+      github: "",
+      images: ["/images/tailgator-list.png", "/images/tailgator-post.png"],
+      demo: "",
+      gradientFrom: "#c9a0dc",
+      gradientTo: "#4a3f6b",
     },
   ],
 
@@ -340,10 +381,4 @@ export const siteConfig: SiteConfig = {
       swatch: "#15161a",
     },
   ],
-
-  template: {
-    authorName: "Bidyut",
-    authorUrl: "https://bidyut.cc",
-    repoUrl: "https://github.com/bidyut10",
-  },
 };

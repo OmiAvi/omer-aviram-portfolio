@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/config";
 import { useLocale } from "./locale-provider";
 
 export function AboutSection() {
-  const { locale, t } = useLocale();
+  const { t } = useLocale();
   const [copied, setCopied] = useState(false);
 
   async function copyEmail() {
@@ -16,17 +16,13 @@ export function AboutSection() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      // clipboard blocked (e.g. insecure context) — fail silently, link still shows the address on hover via title
+      // clipboard blocked (e.g. insecure context); fail silently, link still shows the address on hover via title
     }
   }
 
   return (
     <section className="flex flex-col gap-3 py-3">
-      <p className="text-[13.5px] leading-relaxed text-muted">
-        {siteConfig.bio.current[locale]}
-      </p>
-
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-3 text-[13.5px] text-muted">
+      <div className="flex flex-wrap items-center justify-between gap-3 text-[13.5px] text-muted">
         <span className="flex items-center gap-1.5">
           <MapPin size={13} strokeWidth={2} />
           {siteConfig.location}
@@ -73,27 +69,6 @@ export function AboutSection() {
           </span>
         </motion.button>
       </div>
-
-      <p className="border-t border-border pt-3 text-[11.5px] text-muted">
-        Free, open-source template ·{" "}
-        <a
-          href={`${siteConfig.template.repoUrl}`}
-          target="_blank"
-          rel="noreferrer"
-          className="cursor-pointer underline decoration-border underline-offset-4 hover:text-fg hover:decoration-fg"
-        >
-          MIT licensed
-        </a>{" "}
-        · made by{" "}
-        <a
-          href={siteConfig.template.authorUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="cursor-pointer underline decoration-border underline-offset-4 hover:text-fg hover:decoration-fg"
-        >
-          {siteConfig.template.authorName}
-        </a>
-      </p>
     </section>
   );
 }
