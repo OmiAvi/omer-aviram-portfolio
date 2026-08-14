@@ -14,7 +14,7 @@ export function LanguageSwitcher() {
       label="Change language"
       icon={<span className="text-[13px] leading-none">{current.flag}</span>}
       panel={
-        <div className="flex items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-1.5">
           {locales.map((l) => {
             const active = l.id === locale;
             return (

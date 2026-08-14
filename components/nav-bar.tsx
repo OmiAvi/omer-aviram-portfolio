@@ -18,7 +18,7 @@ export function NavBar() {
 
   return (
     <header className="flex flex-col gap-4 pt-8 pb-4 sm:pt-10">
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex flex-nowrap items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-base font-medium tracking-tighter">

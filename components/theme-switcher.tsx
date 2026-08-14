@@ -14,7 +14,7 @@ export function ThemeSwitcher() {
       label="Change theme"
       icon={<Palette className="h-3.5 w-3.5" strokeWidth={1.75} />}
       panel={
-        <div className="flex items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-1.5">
           {siteConfig.themes.map((t) => {
             const active = t.id === theme.id;
             return (

@@ -16,6 +16,7 @@ export function ProjectsSection() {
   const { locale, t } = useLocale();
   const containerRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState<Project | null>(null);
+  const [openMobileId, setOpenMobileId] = useState<string | null>(null);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -41,41 +42,86 @@ export function ProjectsSection() {
         onMouseLeave={() => setActive(null)}
         className="relative border-t border-border"
       >
-        {siteConfig.projects.map((project) => (
-          <motion.li
-            key={project.id}
-            onMouseEnter={() => setActive(project)}
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            className="relative border-b border-border"
-          >
-            <motion.div
-              className="absolute inset-0 -z-10 rounded-md bg-accent"
-              variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
-              transition={{ duration: 0.25 }}
-            />
-            <div className="flex items-center justify-between gap-4 py-2 text-sm">
-              <div className="min-w-0 flex-1">
-                <p className="truncate">{project.name}</p>
-                <p className="text-[13.5px] mt-1.5 leading-relaxed text-muted">
-                  {project.description[locale]}
-                </p>
-              </div>
-              {project.demo && (
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${project.name} live demo`}
-                  className="flex shrink-0 cursor-pointer items-center text-muted transition-colors hover:text-fg"
+        {siteConfig.projects.map((project) => {
+          const mobileOpen = openMobileId === project.id;
+          return (
+            <motion.li
+              key={project.id}
+              onMouseEnter={() => setActive(project)}
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
+              className="relative border-b border-border"
+            >
+              <motion.div
+                className="absolute inset-0 -z-10 rounded-md bg-accent"
+                variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
+                transition={{ duration: 0.25 }}
+              />
+              <div className="flex items-center justify-between gap-4 py-2 text-sm">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenMobileId(mobileOpen ? null : project.id)
+                  }
+                  aria-expanded={mobileOpen}
+                  className="min-w-0 flex-1 cursor-pointer text-left"
                 >
-                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                </a>
-              )}
-            </div>
-          </motion.li>
-        ))}
+                  <p className="truncate">{project.name}</p>
+                  <p className="text-[13.5px] mt-1.5 leading-relaxed text-muted">
+                    {project.description[locale]}
+                  </p>
+                </button>
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.name} live demo`}
+                    className="flex shrink-0 cursor-pointer items-center text-muted transition-colors hover:text-fg"
+                  >
+                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                  </a>
+                )}
+              </div>
+
+              <AnimatePresence initial={false}>
+                {mobileOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{
+                      height: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+                      opacity: { duration: 0.2 },
+                    }}
+                    className="overflow-hidden sm:hidden"
+                  >
+                    <div className="flex gap-1.5 px-2 pb-3">
+                      {project.images.map((src, i) => (
+                        <div
+                          key={src}
+                          className="relative aspect-4/3 flex-1 overflow-hidden rounded-lg border border-border"
+                          style={{
+                            background: `linear-gradient(140deg, ${project.gradientFrom}, ${project.gradientTo})`,
+                          }}
+                        >
+                          <Image
+                            src={src}
+                            alt={`${project.name} screenshot ${i + 1}`}
+                            fill
+                            sizes="50vw"
+                            className="object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.li>
+          );
+        })}
 
         <AnimatePresence mode="popLayout">
           {active && (
@@ -90,14 +136,15 @@ export function ProjectsSection() {
             >
               <div className="relative aspect-4/3 w-full">
                 {active.images.map((src, i) => {
-                  const tilt = i === 0 ? -8 : 8;
-                  const shift = i === 0 ? -10 : 10;
+                  const tilt = i === 0 ? -10 : 8;
+                  const translateX = i === 0 ? -26 : 22;
+                  const translateY = i === 0 ? -14 : 12;
                   return (
                     <div
                       key={src}
-                      className="absolute inset-0 overflow-hidden rounded-xl border border-border shadow-xl"
+                      className="absolute inset-0 h-[88%] w-[88%] overflow-hidden rounded-xl border border-border shadow-xl"
                       style={{
-                        transform: `rotate(${tilt}deg) translateX(${shift}px)`,
+                        transform: `translate(${translateX}px, ${translateY}px) rotate(${tilt}deg)`,
                         zIndex: i,
                         background: `linear-gradient(140deg, ${active.gradientFrom}, ${active.gradientTo})`,
                       }}
@@ -106,7 +153,7 @@ export function ProjectsSection() {
                         src={src}
                         alt={`${active.name} screenshot ${i + 1}`}
                         fill
-                        sizes="208px"
+                        sizes="184px"
                         className="object-cover"
                       />
                     </div>

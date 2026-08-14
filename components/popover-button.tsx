@@ -48,7 +48,7 @@ export function PopoverButton({
             exit={{ opacity: 0, scale: 0.85, y: -6 }}
             transition={{ type: "spring", bounce: 0.5, duration: 0.4 }}
             onClick={() => setOpen(false)}
-            className="absolute right-0 z-30 mt-2 rounded-xl border border-border bg-bg p-2 shadow-lg"
+            className="absolute right-0 z-30 mt-2 w-max max-w-[calc(100vw-2rem)] rounded-xl border border-border bg-bg p-2 shadow-lg"
           >
             {panel}
           </motion.div>
