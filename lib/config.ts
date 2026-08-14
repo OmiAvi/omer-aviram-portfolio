@@ -86,10 +86,10 @@ export const siteConfig: SiteConfig = {
 
   bio: {
     intro: {
-      en: "University of Florida CS student who has a passion for sports and is chasing after them with a camera in one hand and a laptop in the other, just ran Snapback Sports' content channels to 23.9M+ impressions this summer.",
-      fr: "Étudiant en informatique à l'Université de Floride, passionné de sport et toujours à sa poursuite, caméra dans une main et ordinateur dans l'autre. Pilotage des canaux de contenu de Snapback Sports jusqu'à 23,9M+ d'impressions cet été.",
-      es: "Estudiante de Ciencias de la Computación en la Universidad de Florida, apasionado por el deporte y siempre persiguiéndolo con una cámara en una mano y una laptop en la otra. Gestión de los canales de contenido de Snapback Sports hasta 23,9M+ de impresiones este verano.",
-      bn: "ফ্লোরিডা বিশ্ববিদ্যালয়ের সিএস শিক্ষার্থী, খেলাধুলার প্রতি আমার প্রচণ্ড আগ্রহ, একহাতে ক্যামেরা ও অন্যহাতে ল্যাপটপ নিয়ে সেই আগ্রহের পিছনে ছুটছি। এই গ্রীষ্মে Snapback Sports-এর কনটেন্ট চ্যানেলগুলো পরিচালনা করে ২৩.৯M+ ইম্প্রেশনে পৌঁছে দিয়েছি।",
+      en: "University of Florida CS student with a passion for sports and is chasing after his goals with a camera in one hand and a laptop in the other, just ran Snapback Sports Intern content channels to 23.9M+ impressions this summer.",
+      fr: "Étudiant en informatique à l'Université de Floride, passionné de sport et toujours à la poursuite de ses objectifs, caméra dans une main et ordinateur dans l'autre. Pilotage des canaux de contenu des intern de Snapback Sports jusqu'à 23,9M+ d'impressions cet été.",
+      es: "Estudiante de Ciencias de la Computación en la Universidad de Florida, apasionado por el deporte y siempre persiguiendo sus metas con una cámara en una mano y una laptop en la otra. Gestión de los canales de contenido de los intern de Snapback Sports hasta 23,9M+ de impresiones este verano.",
+      bn: "ফ্লোরিডা বিশ্ববিদ্যালয়ের সিএস শিক্ষার্থী, খেলাধুলার প্রতি আমার প্রচণ্ড আগ্রহ, একহাতে ক্যামেরা ও অন্যহাতে ল্যাপটপ নিয়ে নিজের লক্ষ্যের পিছনে ছুটছি। এই গ্রীষ্মে Snapback Sports-এর ইন্টার্ন কনটেন্ট চ্যানেলগুলো পরিচালনা করে ২৩.৯M+ ইম্প্রেশনে পৌঁছে দিয়েছি।",
     },
   },
 
